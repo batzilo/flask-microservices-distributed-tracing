@@ -1,0 +1,42 @@
+#
+# The Docker Compose YAML file for local development
+#
+
+version: "3.5"
+
+services:
+
+  alpha:
+    build: alpha
+    image: vsoul/alpha
+    ports:
+      - 9000:9000
+    environment:
+      DEBUG: "True"
+      BETA_ENDPOINT: "http://beta:9001"
+      GAMMA_ENDPOINT: "http://gamma:9002"
+
+  beta:
+    build: beta
+    image: vsoul/beta
+    ports:
+      - 9001:9001
+    environment:
+      DEBUG: "True"
+
+  gamma:
+    build: gamma
+    image: vsoul/gamma
+    ports:
+      - 9002:9002
+    environment:
+      DEBUG: "True"
+      DELTA_ENDPOINT: "http://delta:9003"
+
+  delta:
+    build: delta
+    image: vsoul/delta
+    ports:
+      - 9003:9003
+    environment:
+      DEBUG: "True"
